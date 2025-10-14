@@ -6,6 +6,7 @@ function love.load()
     -- setting the window settings
     love.window.setMode(config.baseWidth, config.baseHeight, {resizable = config.resizable, fullscreen = config.fullscreen})
     sceneManager:switch(require("scenes.openWorld"))
+    love.graphics.setDefaultFilter("nearest", "nearest")
 end
 
 function love.update(dt)
