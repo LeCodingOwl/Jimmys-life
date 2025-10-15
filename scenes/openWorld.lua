@@ -1,4 +1,5 @@
-local anim8 = require("libraries/anim8")
+local anim8 = require("libraries.anim8")
+local sti = require("libraries.sti")
 
 local openWorld = {}
 
@@ -25,6 +26,8 @@ player.animation.up = anim8.newAnimation(player.grid('7-12', 3), 0.2)
 player.animation.right = anim8.newAnimation(player.grid('1-6', 3), 0.2)
 
 player.anim = player.animation.down
+
+local gameMap = sti("maps/testMap.lua")
 
 function openWorld:load()
 
@@ -85,8 +88,8 @@ function openWorld:update(dt)
 end
 
 function openWorld:draw(centerX, centerY)
-    --love.graphics.rectangle("fill", player.x + (centerX - (player.width / 2)), player.y + (centerY - (player.height / 2)), player.width, player.height)
-    player.anim:draw(player.spriteSheet, player.x + (centerX - (player.width / 2)), player.y + (centerY - (player.height / 2)), nil, 1.5)
+    gameMap:draw()
+    player.anim:draw(player.spriteSheet, player.x + (centerX - (player.width / 2)), player.y + (centerY - (player.height / 2)), nil)
 end
 
 return openWorld
